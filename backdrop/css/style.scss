@@ -1,0 +1,51 @@
+// common
+*{
+  margin: 0;
+  padding: 0;
+}
+// variable, class setting
+@mixin width-height($width, $height){
+  width: $width;
+  height: $height;
+}
+@mixin flex-align-justify($align, $justify){
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+}
+%view-100{
+  width: 100vw;
+  height: 100vh;
+}
+%inherit-size{
+  width: inherit;
+  height: inherit;
+}
+%flex-center-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+// 
+#root{
+  @extend %view-100;
+  background-image: url(https://i.picsum.photos/id/1025/4951/3301.jpg?hmac=_aGh5AtoOChip_iaMo8ZvvytfEojcgqbCH7dzaz-H8Y);
+  background-size: cover;
+  @extend %flex-center-center;
+  &>div{
+    @include width-height(50vw, 20vh);
+    background-color: rgba($color: #fff, $alpha: .2);
+    // object-fit: cover;
+    // !background-size 속성을 사용해야한다
+    // background-size: cover;
+    // !backdrop-filter: blur(속성값);을 사용하면 하위 텍스트 부분과 관계없이 뒷배경만 블러 가능
+    backdrop-filter: blur(10px);
+    @extend %flex-center-center;
+    border-radius: 30px;
+    &>h1{
+      // color: #fff;
+      // !글씨에도 투명도 조절을
+      color:rgba(220, 220, 220,0.8);
+    }
+  }
+}
